@@ -1,3 +1,4 @@
+
 const { pool } = require("../config/database");
 
 const authService = required('../services/authService');
@@ -79,10 +80,10 @@ class authController {
         }  
     }
     //encontrar usuario pelo id
-    async getUserById(req, res, next){
+    async me(req, res, next){
         try{
             const {pool} = req('../config/database');
-           const [users] = await pool.execute('SELECT id, name, email, phone, address, avatar_url, created_at FROM users WHERE id = ?', 
+            const [users] = await pool.execute('SELECT id, name, email, phone, address, avatar_url, created_at FROM users WHERE id = ?', 
             [req.userId]);
            if(users.length === 0){
             return res.status(404).json({
@@ -98,6 +99,5 @@ class authController {
             next(error);
         }
 }
-
-
 }
+module.exports = new authController();
