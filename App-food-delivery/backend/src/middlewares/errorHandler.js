@@ -24,7 +24,7 @@ const errorHandler = (err, req , res , next) => {
     if(err.code === 'ER_DUP_ENTRY'){
         return res.status(409).json({
             sucess: false,
-            message: 'Registro duplicado>',
+            message: 'Registro duplicado:',
         });
     }
     res.status(err.status|| 500).json({

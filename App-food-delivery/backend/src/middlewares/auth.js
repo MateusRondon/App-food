@@ -11,7 +11,7 @@ try{
     }
         const parts = authHeader.sqlit(' ');
         if(parts.length !==2){
-            return res.status(401);json({
+            return res.status(401).json({
                 success: false,
                 message: 'Token malformado'
             });
