@@ -31,7 +31,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-   apiKey: "AIzaSyAHkBUtcN6-2e6khn3l8pb-Vw0mfcbb3fM",
+   apiKey: " API do Firebase",
   authDomain: "food-delivery-9531f.firebaseapp.com",
   databaseURL: "https://food-delivery-9531f-default-rtdb.firebaseio.com",
   projectId: "food-delivery-9531f",
