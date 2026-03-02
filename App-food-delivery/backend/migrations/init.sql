@@ -1,6 +1,6 @@
--- Active: 1769537032515@@127.0.0.1@3306
+
 DROP TABLE IF EXISTS order_items;
-DROP TABLE IF EXISTS orderS;
+DROP TABLE IF EXISTS orders;
 DROP TABLE IF EXISTS cart_items;
 DROP TABLE IF EXISTS carts;
 DROP TABLE IF EXISTS products;
@@ -8,20 +8,23 @@ DROP TABLE IF EXISTS categories;
 DROP TABLE IF EXISTS restaurants;
 DROP TABLE IF EXISTS users;
 
-    CREATE TABLE users (
-    id INT PRIMARY KEY AURO_INCREMENT,
+-- Users Table
+CREATE TABLE users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
-    phone VARCHAR (20),
+    phone VARCHAR(20),
     address TEXT,
     avatar_url VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE_TIMESTAMP,
-    INDEX idx_email(email)
-    )ENGINE = InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-    CREATE TABLE restaurants (
-       id INT PRIMARY KEY AUTO_INCREMENT,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    INDEX idx_email (email)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Restaurants Table
+CREATE TABLE restaurants (
+    id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     description TEXT,
     image_url VARCHAR(255),
@@ -35,9 +38,10 @@ DROP TABLE IF EXISTS users;
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     INDEX idx_category (category),
     INDEX idx_rating (rating)
-    )   ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-    CREATE TABLE categories (
+-- Categories Table
+CREATE TABLE categories (
     id INT PRIMARY KEY AUTO_INCREMENT,
     restaurant_id INT NOT NULL,
     name VARCHAR(100) NOT NULL,

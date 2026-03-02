@@ -39,7 +39,7 @@ app.post('${API_PREFIX}/auth/register', [
 //Login
 app.post('${API_PREFIX}/auth/login',[
     body('email').isEmail().withMessage('Email inválido'),
-    body('password').notEmpty().withMessage('Senha é obrigatória')
+    body('password').notEmpty().withMessage('Senha é obrigatória!')
 ],authController.login);
 
 // Rotas de restaurantes
@@ -72,7 +72,7 @@ async function startServer() {
     try {
         await testConnection();
         app.listen(PORT, () => {
-            logger.info(`🚀 Server running on port ${PORT}`);
+            logger.info(`🚀 Servico rodando na porta ${PORT}`);
             logger.info(`📱 API URL: http://localhost:${PORT}${API_PREFIX}`);
             logger.info(`🌍 Environment: ${process.env.NODE_ENV}`);
         });
